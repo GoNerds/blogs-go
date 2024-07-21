@@ -2,6 +2,6 @@ package models
 
 type User struct {
 	ID    string `bson:"_id,omitempty"`
-	Name  string `bson:"name,omitempty"`
-	Email string `bson:"email,omitempty"`
+	Name  string `bson:"name"`
+	Email string `bson:"email"`
 }
