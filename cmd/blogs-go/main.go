@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"blogs-go/db"
-	"blogs-go/routes"
+	"blogs-go/internal/db"
+	"blogs-go/internal/routes"
 )
 
 func main() {
@@ -18,5 +18,5 @@ func main() {
 
 	http.Handle("/", r)
 	log.Println("Server started on port 5000")
-	log.Fatal(http.ListenAndServe(":5000", nil)
+	log.Fatal(http.ListenAndServe(":5000", nil))
 }

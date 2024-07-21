@@ -7,7 +7,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 
-	"blogs-go/models"
+	"blogs-go/internal/models"
 )
 
 type UserRepository struct {
@@ -51,12 +51,8 @@ func (r *UserRepository) GetUserByID(id string) (*models.User, error) {
 	defer cancel()
 
 	var user models.User
-	err := r.collection.FineOne(ctx, bson.M{"_id": id}).Decode(&user)
-	if err != nil {
-		return
-	}
-
-	return &user, nil
+	err := r.collection.FindOne(ctx, bson.M{"_id": id}).Decode(&user)
+	return &user, err
 }
 
 func (r *UserRepository) UpdateUser(user *models.User) error {
@@ -67,7 +63,6 @@ func (r *UserRepository) UpdateUser(user *models.User) error {
 		"$set": bson.D{
 			{Key: "name", Value: user.Name},
 			{Key: "email", Value: user.Email},
-			{Key: "password", Value: user.Password},
 		},
 	})
 

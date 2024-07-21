@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"blogs-go/models"
-	"blogs-go/repository"
+	"blogs-go/internal/models"
+	"blogs-go/internal/repository"
 
 	"github.com/gorilla/mux"
 )
@@ -19,7 +19,7 @@ func NewUserHandler(userRepo *repository.UserRepository) *UserHandler {
 }
 
 func (uh *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
-	var user models.UserHandler
+	var user models.User
 	json.NewDecoder(r.Body).Decode(&user)
 
 	err := uh.userRepo.CreateUser(&user)

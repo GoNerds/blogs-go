@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"blogs-go/handlers"
-	"blogs-go/repository"
+	"blogs-go/internal/handlers"
+	"blogs-go/internal/repository"
 
 	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/mongo"
